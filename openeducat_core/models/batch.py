@@ -45,6 +45,7 @@ class OpBatch(models.Model):
         for record in self:
             start_date = fields.Date.from_string(record.start_date)
             end_date = fields.Date.from_string(record.end_date)
+            print('----------start_date, end_date', start_date, end_date)
             if start_date > end_date:
                 raise ValidationError(
                     _("End Date cannot be set before Start Date."))
