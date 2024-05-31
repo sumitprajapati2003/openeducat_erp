@@ -58,6 +58,7 @@ class OpFeesTerms(models.Model):
     @api.model_create_multi
     def create(self, vals):
         res = super(OpFeesTerms, self).create(vals)
+        print("res------->", res.line_ids)
         if not res.line_ids:
             raise exceptions.AccessError(_("Fees Terms must be Required!"))
         total = 0.0
