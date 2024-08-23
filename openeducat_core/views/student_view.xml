@@ -114,7 +114,7 @@
                                                     <field name="middle_name" placeholder="Middle Name"/>
                                                 </td>
                                                 <td style="padding-right:10px;">
-                                                    <field name="last_name" placeholder="Last Name"/>
+                                                    <field name="last_name" required="1" placeholder="Last Name"/>
                                                 </td>
                                             </tr>
                                         </table>

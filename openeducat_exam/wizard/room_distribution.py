@@ -20,6 +20,7 @@
 ###############################################################################
 
 from odoo import models, api, fields, exceptions, _
+from odoo.exceptions import ValidationError
 
 
 class OpRoomDistribution(models.TransientModel):
@@ -93,6 +94,9 @@ class OpRoomDistribution(models.TransientModel):
 
     def schedule_exam(self):
         attendance = self.env['op.exam.attendees']
+        if not self.room_ids or not self.student_ids:
+            raise ValidationError(
+                    _("Please Enter Room And student"))
         for exam in self:
             if exam.total_student > exam.room_capacity:
                 raise exceptions.AccessError(

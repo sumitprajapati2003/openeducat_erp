@@ -44,8 +44,7 @@ class OpAssignmentSubLine(models.Model):
         'op.assignment', 'Assignment', required=True)
     student_id = fields.Many2one(
         'op.student', 'Student',
-        default=lambda self: self.env['op.student'].search(
-            [('user_id', '=', self.env.user.id)]), required=True)
+       required=True)
     description = fields.Text('Description', tracking=True)
     state = fields.Selection([
         ('draft', 'Draft'), ('submit', 'Submitted'), ('reject', 'Rejected'),

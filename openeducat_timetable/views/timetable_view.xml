@@ -60,7 +60,7 @@
                             <group>
                                 <field name="faculty_id" options='{"no_open": True}'/>
                                 <field name="course_id" options='{"no_open": True}'/>
-                                <field name="subject_id"/>
+                                <field name="subject_id" domain="[('course_id', '=', course_id)]"/>
                                 <field name="type"/>
                             </group>
                             <group>
