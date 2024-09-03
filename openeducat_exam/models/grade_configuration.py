@@ -35,3 +35,5 @@ class OpGradeConfiguration(models.Model):
     def max_per_validation(self):
         if self.max_per > 100:
             raise ValidationError("Maximum percentage should not be greater than 100")
+        if self.max_per < self.min_per:
+            raise ValidationError("Minimum percentage should be not greater than Maximum percentage")

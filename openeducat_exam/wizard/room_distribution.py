@@ -97,6 +97,14 @@ class OpRoomDistribution(models.TransientModel):
         if not self.room_ids or not self.student_ids:
             raise ValidationError(
                     _("Please Enter Room And student"))
+         
+        attendees = self.env['op.exam.attendees'].search([
+        ('room_id', 'in', self.room_ids.ids),
+        ('exam_id.start_time', '<', self.end_time),
+        ('exam_id.end_time', '>', self.start_time)])
+        if attendees:
+            raise ValidationError(_("The selected rooms are already booked for the specified time."))
+
         for exam in self:
             if exam.total_student > exam.room_capacity:
                 raise exceptions.AccessError(
