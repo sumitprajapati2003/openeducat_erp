@@ -29,6 +29,7 @@ class OpAdmissionRegister(models.Model):
     _inherit = "mail.thread"
     _description = "Admission Register"
     _order = 'id DESC'
+    # Test
 
     name = fields.Char(
         'Name', required=True, readonly=True)
